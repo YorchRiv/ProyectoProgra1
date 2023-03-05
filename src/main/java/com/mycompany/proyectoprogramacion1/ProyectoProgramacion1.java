@@ -6,8 +6,8 @@ package com.mycompany.proyectoprogramacion1;
 import java.util.Scanner;
 
 /**
- * *@author Fernando Lopez 
- *@author Oscar Tobias
+ * @author Fernando Lopez 
+ * @author Oscar Tobias
  * @author Jorge Mejicanos
  */
 public class ProyectoProgramacion1 {
