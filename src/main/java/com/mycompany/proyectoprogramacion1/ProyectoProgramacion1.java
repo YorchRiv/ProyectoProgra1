@@ -51,7 +51,7 @@ public class ProyectoProgramacion1 {
                 break;
 
             case 2:
-                System.out.println("Fase en construccion :D");
+                System.out.println("Prueba de git");
                 break;
 
             case 3:
