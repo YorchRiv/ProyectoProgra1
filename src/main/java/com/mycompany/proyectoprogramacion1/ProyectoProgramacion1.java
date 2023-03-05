@@ -9,6 +9,7 @@ import java.util.Scanner;
  * @author Fernando Lopez 
  * @author Oscar Tobias
  * @author Jorge Mejicanos
+ * @author Mynor Solis
  */
 public class ProyectoProgramacion1 {
 
