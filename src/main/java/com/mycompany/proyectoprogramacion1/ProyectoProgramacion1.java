@@ -6,7 +6,7 @@ package com.mycompany.proyectoprogramacion1;
 import java.util.Scanner;
 
 /**
- * @author Fernando Lopez 
+ * @author Fernando Lopez
  * @author Oscar Tobias
  * @author Jorge Mejicanos
  * @author Mynor Solis
@@ -23,30 +23,34 @@ public class ProyectoProgramacion1 {
                 menuVehiculo();
                 opcion = scanner.nextInt(); //Ingresar Opcion
 
-                switch(opcion)
-                {
+                switch (opcion) {
                     case 1:
                         tipoVehiculo();
                         int tipo = scanner.nextInt();
-                        switch(tipo){
-                            case 1:                                                    
+                        switch (tipo) {
+                            case 1:
                                 String comV;
                                 System.out.println("¿Que tipo de combustible usa el carro?:");
                                 System.out.println("1. Diesel");
                                 System.out.println("2. Gasolina");
                                 int opcom = scanner.nextInt();
                                 scanner.nextLine();
-                                if(opcom == 1){comV = "Diesel";}
-                                if(opcom == 2){comV = "Gasolina";}
-                                else{comV = "Diesel";}
-                        
+                                if (opcom == 1) {
+                                    comV = "Diesel";
+                                }
+                                if (opcom == 2) {
+                                    comV = "Gasolina";
+                                } else {
+                                    comV = "NO PERMITIDO";
+                                }
+
                                 System.out.print("Ingrese la Marca del Vehiculo: ");
                                 String marcaV = scanner.nextLine();
-                        
+
                                 System.out.print("Ingrese el Ano de lanzamiento: ");
                                 int anoV = scanner.nextInt();
                                 scanner.nextLine();
-                        
+
                                 System.out.print("Ingrese la Placa del Vehiculo: ");
                                 String placaV = scanner.nextLine();
 
@@ -54,33 +58,70 @@ public class ProyectoProgramacion1 {
                                 String nombreV = scanner.nextLine();
 
                                 Carro carro1 = new Carro(marcaV, nombreV, anoV, placaV, comV);
-                                carro1.mostrarInfo();
+                                carro1.mostrarInfoCarro();
                                 break;
-                              
+
                             case 2:
+                                String movBal;
                                 movimientoBalsa();
+                                int opBal = scanner.nextInt();
+                                scanner.nextLine();
+                                if (opBal == 1) {
+                                    movBal = "Motor";
+                                }
+                                if (opBal == 2) {
+                                    movBal = "A remo";
+                                } else {
+                                    movBal = "NO PERMITIDO";
+                                }
 
+                                System.out.print("Ingrese la marca de la Balsa: ");
+                                String marcaB = scanner.nextLine();
+
+                                System.out.print("Ingrese el anio de lanzamiento: ");
+                                int anoB = scanner.nextInt();
+                                scanner.nextLine();
+
+                                System.out.print("Ingrese nombre a registrar: ");
+                                String nombreB = scanner.nextLine();
+
+                                Balsa balsa = new Balsa(marcaB, nombreB, anoB, movBal);
+                                balsa.mostrarInfoBalsa();
                                 break;
-                                
+
                             case 3:
-                                pasajerosAvion();
+                                System.out.print("Ingrese la Cantidad de Pasajeros del Avion:");
+                                int pasajeros = scanner.nextInt();
+                                scanner.nextLine();
 
+                                System.out.print("Ingrese la marca del Avion: ");
+                                String marcaA = scanner.nextLine();
+
+                                System.out.print("Ingrese el anio de lanzamiento: ");
+                                int anoA = scanner.nextInt();
+                                scanner.nextLine();
+
+                                System.out.print("Ingrese nombre a registrar: ");
+                                String nombreA = scanner.nextLine();
+
+                                Avion avion = new Avion(marcaA, nombreA, anoA, pasajeros);
+                                avion.mostrarInfoAvion();
                                 break;
-                                
+
                             case 4:
-                                
+
                                 break;
                         }
                         break;
-                    
+
                     case 2:
                         break;
-                    
+
                     case 3:
-                        
+
                         System.out.println("prueba de mi segundo commit");
                         break;
-                    
+
                     case 4:
                         break;
                 }
@@ -103,7 +144,8 @@ public class ProyectoProgramacion1 {
                 break;
         }
     }
-    public static void menuPrincipal(){
+
+    public static void menuPrincipal() {
         System.out.println("MENU PRINCIPAL");
         System.out.println("1.)Fase 1 - Objetos y Recursividad");
         System.out.println("2.)Fase 2");
@@ -112,29 +154,26 @@ public class ProyectoProgramacion1 {
 
         System.out.print("Seleccione una Opcion: ");
     }
-    
-    public static void menuVehiculo(){
+
+    public static void menuVehiculo() {
         System.out.println("FASE 1 - Objetos y Recursividad");
         System.out.println("1.)Ingresar datos de vehiculos");
         System.out.println("2.)Mostrar datos del vehiculo");
         System.out.println("3.)Crear torre de Hanoi");
         System.out.println("4.)Regresar al menu principal");
     }
- 
-    public static void tipoVehiculo(){
+
+    public static void tipoVehiculo() {
         System.out.println("Seleccione el vehiculo a usar: ");
         System.out.println("1. Carro");
         System.out.println("2. Balsa");
         System.out.println("3. Avion");
     }
-    
-    public static void movimientoBalsa(){
+
+    public static void movimientoBalsa() {
         System.out.println("Seleccione el tipo de Balsa");
         System.out.println("1. Motor");
         System.out.println("2. A remo");
     }
 
-    public static void pasajerosAvion(){
-        System.out.println("Ingrese la Cantidad de Pasajeros del Avion:");
-    }
 }

@@ -48,6 +48,6 @@ public class vehiculo{
     public void mostrarInfo(){
         System.out.println("Marca: "+ marca);
         System.out.println("Propietario: "+ nombre);
-        System.out.println("Ano Lanzamiento: "+ marca);
+        System.out.println("Ano Lanzamiento: "+ ano);
     }
 }
