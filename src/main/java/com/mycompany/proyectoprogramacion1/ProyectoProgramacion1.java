@@ -4,7 +4,6 @@
 package com.mycompany.proyectoprogramacion1;
 
 import java.util.Scanner;
-import java.io.IOException;
 
 /**
  * @author Fernando Lopez 
@@ -30,14 +29,7 @@ public class ProyectoProgramacion1 {
                         tipoVehiculo();
                         int tipo = scanner.nextInt();
                         switch(tipo){
-                            case 1:
-                                try { //Para Limpiar Consola
-                                    clearConsole(); // Limpia la consola
-                                } catch (IOException | InterruptedException e) {
-                                    // Manejar la excepción adecuadamente
-                                    e.printStackTrace();
-                                }
-                            
+                            case 1:                                                    
                                 String comV;
                                 System.out.println("¿Que tipo de combustible usa el carro?:");
                                 System.out.println("1. Diesel");
@@ -60,13 +52,6 @@ public class ProyectoProgramacion1 {
 
                                 System.out.print("Ingrese el nombre a registrar: ");
                                 String nombreV = scanner.nextLine();
-
-                                try { //Para Limpiar Consola
-                                    clearConsole(); // Limpia la consola
-                                } catch (IOException | InterruptedException e) {
-                                    // Manejar la excepción adecuadamente
-                                    e.printStackTrace();
-                                }
 
                                 Carro carro1 = new Carro(marcaV, nombreV, anoV, placaV, comV);
                                 carro1.mostrarInfo();
@@ -152,14 +137,4 @@ public class ProyectoProgramacion1 {
     public static void pasajerosAvion(){
         System.out.println("Ingrese la Cantidad de Pasajeros del Avion:");
     }
-
-    public static void clearConsole() throws IOException, InterruptedException {
-    // Crea un nuevo proceso que ejecuta el comando "cls" en Windows
-    ProcessBuilder builder = new ProcessBuilder("cmd", "/c", "cls");
-    builder.inheritIO();
-    Process process = builder.start();
-
-    // Espera a que el proceso termine
-    process.waitFor();
-}
 }
