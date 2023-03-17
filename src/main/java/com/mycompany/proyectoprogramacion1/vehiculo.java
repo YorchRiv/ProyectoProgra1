@@ -12,14 +12,12 @@ package com.mycompany.proyectoprogramacion1;
 
 public class vehiculo{
     private String marca;
-    private String placa;
     private String nombre;
     private int ano;
 
     //Constructor
-    public vehiculo(String marca, String placa, String nombre, int ano){
+    public vehiculo(String marca, String nombre, int ano){
         this.marca = marca;
-        this.placa = placa;
         this.nombre = nombre;
         this.ano = ano;
     }
@@ -27,9 +25,6 @@ public class vehiculo{
     //Getters
     public String getMarca(){
         return marca;
-    }
-    public String getPlaca(){
-        return placa;
     }
     public String getNombre(){
         return nombre;
@@ -42,13 +37,17 @@ public class vehiculo{
     public void setMarca(String marca){
         this.marca = marca;
     }
-    public void setPlaca(String placa){
-        this.placa = placa;
-    }
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
     public void setAno(int ano){
         this.ano = ano;
+    }
+
+    //Metodos
+    public void mostrarInfo(){
+        System.out.println("Marca: "+ marca);
+        System.out.println("Propietario: "+ nombre);
+        System.out.println("Ano Lanzamiento: "+ marca);
     }
 }

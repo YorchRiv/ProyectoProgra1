@@ -4,6 +4,7 @@
 package com.mycompany.proyectoprogramacion1;
 
 import java.util.Scanner;
+import java.io.IOException;
 
 /**
  * @author Fernando Lopez 
@@ -30,8 +31,45 @@ public class ProyectoProgramacion1 {
                         int tipo = scanner.nextInt();
                         switch(tipo){
                             case 1:
-                                gasolinaCarro();
-                                
+                                try { //Para Limpiar Consola
+                                    clearConsole(); // Limpia la consola
+                                } catch (IOException | InterruptedException e) {
+                                    // Manejar la excepción adecuadamente
+                                    e.printStackTrace();
+                                }
+                            
+                                String comV;
+                                System.out.println("¿Que tipo de combustible usa el carro?:");
+                                System.out.println("1. Diesel");
+                                System.out.println("2. Gasolina");
+                                int opcom = scanner.nextInt();
+                                scanner.nextLine();
+                                if(opcom == 1){comV = "Diesel";}
+                                if(opcom == 2){comV = "Gasolina";}
+                                else{comV = "Diesel";}
+                        
+                                System.out.print("Ingrese la Marca del Vehiculo: ");
+                                String marcaV = scanner.nextLine();
+                        
+                                System.out.print("Ingrese el Ano de lanzamiento: ");
+                                int anoV = scanner.nextInt();
+                                scanner.nextLine();
+                        
+                                System.out.print("Ingrese la Placa del Vehiculo: ");
+                                String placaV = scanner.nextLine();
+
+                                System.out.print("Ingrese el nombre a registrar: ");
+                                String nombreV = scanner.nextLine();
+
+                                try { //Para Limpiar Consola
+                                    clearConsole(); // Limpia la consola
+                                } catch (IOException | InterruptedException e) {
+                                    // Manejar la excepción adecuadamente
+                                    e.printStackTrace();
+                                }
+
+                                Carro carro1 = new Carro(marcaV, nombreV, anoV, placaV, comV);
+                                carro1.mostrarInfo();
                                 break;
                               
                             case 2:
@@ -105,12 +143,6 @@ public class ProyectoProgramacion1 {
         System.out.println("3. Avion");
     }
     
-    public static void gasolinaCarro(){
-        System.out.println("¿Que tipo de gasolina usa el carro?");
-        System.out.println("1. Diesel");
-        System.out.println("2. Gasolina");
-    }
-    
     public static void movimientoBalsa(){
         System.out.println("Seleccione el tipo de Balsa");
         System.out.println("1. Motor");
@@ -120,4 +152,14 @@ public class ProyectoProgramacion1 {
     public static void pasajerosAvion(){
         System.out.println("Ingrese la Cantidad de Pasajeros del Avion:");
     }
+
+    public static void clearConsole() throws IOException, InterruptedException {
+    // Crea un nuevo proceso que ejecuta el comando "cls" en Windows
+    ProcessBuilder builder = new ProcessBuilder("cmd", "/c", "cls");
+    builder.inheritIO();
+    Process process = builder.start();
+
+    // Espera a que el proceso termine
+    process.waitFor();
+}
 }
