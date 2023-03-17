@@ -119,10 +119,24 @@ public class ProyectoProgramacion1 {
 
                     case 3:
 
-                        System.out.println("prueba de mi segundo commit");
+                        //System.out.println("prueba de mi segundo commit");
+                        
+                        Prueba torre=new Prueba();
+                        System.out.println("INGRESE NUMEROS DE DISCOS QUE DESEE USAR: ");
+                        int numero; 
+                        numero = scanner.nextInt();
+                                                
+                        torre.Prueba(numero, "origen", "destino", "auxiliar");
+                                
+                        menuPrincipal();
+                        
                         break;
 
                     case 4:
+                        
+                        menuPrincipal();
+                        
+                        
                         break;
                 }
                 break;
