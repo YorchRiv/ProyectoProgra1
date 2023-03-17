@@ -35,9 +35,13 @@ public class ProyectoProgramacion1 {
                                 break;
                               
                             case 2:
+                                movimientoBalsa();
+
                                 break;
                                 
                             case 3:
+                                pasajerosAvion();
+
                                 break;
                                 
                             case 4:
@@ -97,8 +101,8 @@ public class ProyectoProgramacion1 {
     public static void tipoVehiculo(){
         System.out.println("Seleccione el vehiculo a usar: ");
         System.out.println("1. Carro");
-        System.out.println("3. Balsa");
-        System.out.println("2. Avion");
+        System.out.println("2. Balsa");
+        System.out.println("3. Avion");
     }
     
     public static void gasolinaCarro(){
@@ -107,4 +111,13 @@ public class ProyectoProgramacion1 {
         System.out.println("2. Gasolina");
     }
     
+    public static void movimientoBalsa(){
+        System.out.println("Seleccione el tipo de Balsa");
+        System.out.println("1. Motor");
+        System.out.println("2. A remo");
+    }
+
+    public static void pasajerosAvion(){
+        System.out.println("Ingrese la Cantidad de Pasajeros del Avion:");
+    }
 }
