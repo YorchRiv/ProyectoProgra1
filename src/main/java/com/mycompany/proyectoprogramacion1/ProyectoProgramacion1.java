@@ -118,17 +118,22 @@ public class ProyectoProgramacion1 {
                         break;
 
                     case 3:
-
-                        //System.out.println("prueba de mi segundo commit");
+                                     
+                        Scanner sc = new Scanner(System.in);
+                        int n;
                         
-                        Prueba torre=new Prueba();
-                        System.out.println("INGRESE NUMEROS DE DISCOS QUE DESEE USAR: ");
-                        int numero; 
-                        numero = scanner.nextInt();
-                                                
-                        torre.Prueba(numero, "origen", "destino", "auxiliar");
-                                
-                        menuPrincipal();
+                        do {
+                            System.out.print("Ingrese el número de discos (mínimo 3): ");
+                            n = sc.nextInt();
+                            if (n < 3) {
+                                System.out.println("Debe ingresar un mínimo de 3 discos para realizar la Torre de Hanoi.");
+                            }
+                        } while (n < 3);
+                        
+                        int[][] torres = new int[3][n];
+                        TorreDeHanoi.llenarTorreInicial(torres);
+                        TorreDeHanoi.imprimirTorres(torres);
+                        TorreDeHanoi.resolverTorreDeHanoi(n, 0, 2, 1, torres);
                         
                         break;
 
