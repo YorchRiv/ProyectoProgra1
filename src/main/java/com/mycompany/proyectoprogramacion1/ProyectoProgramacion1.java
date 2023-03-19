@@ -59,8 +59,8 @@ public class ProyectoProgramacion1 {
                                 String nombreV = scanner.nextLine();
 
                                 carro = new Carro(marcaV, nombreV, anoV, placaV, comV);
-                                carro.mostrarInfo();
                                 carro.setTipoCombustible(comV);
+                                carro.mostrarInfo();
                                 tipoV = 1;
                                 break;
 
