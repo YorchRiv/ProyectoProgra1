@@ -14,7 +14,6 @@ public class Balsa extends vehiculo{
     public Balsa( String marca, String nombre, int ano, String opcionBalsa){
         super(marca, nombre, ano);
         this.opcionBalsa = opcionBalsa;
-        
     }
     
     public String getOpcion(){
@@ -25,7 +24,7 @@ public class Balsa extends vehiculo{
         this.opcionBalsa = opcionBalsa;
     }
     
-    public void mostrarInfoBalsa(){
+    public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("La balsa se mueve por: " + opcionBalsa);
     }

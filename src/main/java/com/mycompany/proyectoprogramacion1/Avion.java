@@ -25,7 +25,7 @@ public class Avion extends vehiculo{
         this.numPasajeros = numPasajeros;
     }
     
-    public void mostrarInfoAvion(){
+    public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("El numero de pasajeros es: " + numPasajeros);
     }

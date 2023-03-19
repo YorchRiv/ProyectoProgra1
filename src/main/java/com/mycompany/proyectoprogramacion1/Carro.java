@@ -39,7 +39,7 @@ public class Carro extends vehiculo{
 
 
     //Metodos
-    public void mostrarInfoCarro(){
+    public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("Placa: " + placa);
         System.out.println("Tipo Combustible: " + tipoCom);
