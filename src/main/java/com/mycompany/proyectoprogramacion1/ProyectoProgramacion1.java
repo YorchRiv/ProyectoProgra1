@@ -43,6 +43,7 @@ public class ProyectoProgramacion1 {
                                         opcom = scanner.nextInt();
                                         scanner.nextLine();
 
+<<<<<<< HEAD
                                         switch (opcom) {
                                             case 1:
                                                 comV = "Diesel";
@@ -55,6 +56,11 @@ public class ProyectoProgramacion1 {
                                                 break;
                                         }
                                     }
+=======
+                                if(opcom == 1){comV = "Diesel";}
+                                else if(opcom == 2){comV = "Gasolina";}
+                                else{comV = "Invalido";}
+>>>>>>> 82ac0a836f0796c91dbe30372d4f06ac8be0daab
 
                                     System.out.print("Ingrese la Marca del Vehiculo: ");
                                     String marcaV = scanner.nextLine();
@@ -89,6 +95,7 @@ public class ProyectoProgramacion1 {
                                     int opBal = scanner.nextInt();
                                     scanner.nextLine();
 
+<<<<<<< HEAD
                                     if (opBal == 1) {
                                         movBal = "Motor";
                                     }
@@ -97,6 +104,11 @@ public class ProyectoProgramacion1 {
                                     } else {
                                         movBal = "Invalido";
                                     }
+=======
+                                if(opBal == 1){movBal = "Motor";}
+                                else if(opBal == 2){movBal = "Remo";}
+                                else{movBal = "Invalido";}
+>>>>>>> 82ac0a836f0796c91dbe30372d4f06ac8be0daab
 
                                     System.out.print("Ingrese la marca de la Balsa: ");
                                     String marcaB = scanner.nextLine();
