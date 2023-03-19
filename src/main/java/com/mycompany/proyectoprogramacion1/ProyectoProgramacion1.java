@@ -69,11 +69,19 @@ public class ProyectoProgramacion1 {
                                     System.out.print("Ingrese el nombre a registrar: ");
                                     String nombreV = scanner.nextLine();
 
+<<<<<<< HEAD
                                     carro = new Carro(marcaV, nombreV, anoV, placaV, comV);
                                     carro.mostrarInfo();
                                     carro.setTipoCombustible(comV);
                                     tipoV = 1;
                                     break;
+=======
+                                carro = new Carro(marcaV, nombreV, anoV, placaV, comV);
+                                carro.setTipoCombustible(comV);
+                                carro.mostrarInfo();
+                                tipoV = 1;
+                                break;
+>>>>>>> 2b3afd3c4ce7cfbc67a415e2fa43754f4a64dde7
 
                                 case 2: //Balsa
                                     String movBal;
