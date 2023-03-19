@@ -3,6 +3,7 @@
  */
 package com.mycompany.proyectoprogramacion1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,7 @@ public class ProyectoProgramacion1 {
         Carro carro = null;
         Balsa balsa = null;
         Avion avion = null;
+        ArrayList<vehiculo> listaVehiculos = new ArrayList<vehiculo>();
         do {
             menuPrincipal();
             int opcion = scanner.nextInt();
@@ -45,8 +47,7 @@ public class ProyectoProgramacion1 {
 
                                         if (opcom == 1) {
                                             comV = "Diesel";
-                                        }
-                                        else if (opcom == 2) {
+                                        } else if (opcom == 2) {
                                             comV = "Gasolina";
                                         } else {
                                             comV = "Invalido";
@@ -66,25 +67,28 @@ public class ProyectoProgramacion1 {
                                     System.out.print("Ingrese el nombre a registrar: ");
                                     String nombreV = scanner.nextLine();
 
-                                carro = new Carro(marcaV, nombreV, anoV, placaV, comV);
-                                carro.setTipoCombustible(comV);
-                                carro.mostrarInfo();
-                                tipoV = 1;
-                                break;
+                                    carro = new Carro(marcaV, nombreV, anoV, placaV, comV);
+                                    carro.setTipoCombustible(comV);
+                                    listaVehiculos.add(carro);
+                                    System.out.println("Sus datos ha sido agregados exitosamente");
+                                    tipoV = 1;
+                                    break;
 
-                                case 2: //Balsa
-                                    String movBal;
-                                    movimientoBalsa();
-                                    int opBal = scanner.nextInt();
-                                    scanner.nextLine();
+                                case 2: //Balsa--
+                                    String movBal = "";
+                                    int opBal = 0;
+                                    while (opBal != 1 && opBal != 2) {
+                                        movimientoBalsa();
+                                        opBal = scanner.nextInt();
+                                        scanner.nextLine();
+                                        if (opBal == 1) {
+                                            movBal = "Motor";
+                                        } else if (opBal == 2) {
+                                            movBal = "Remo";
+                                        } else {
+                                            movBal = "Invalido";
+                                        }
 
-                                    if (opBal == 1) {
-                                        movBal = "Motor";
-                                    }
-                                    else if (opBal == 2) {
-                                        movBal = "Remo";
-                                    } else {
-                                        movBal = "Invalido";
                                     }
 
                                     System.out.print("Ingrese la marca de la Balsa: ");
@@ -99,7 +103,8 @@ public class ProyectoProgramacion1 {
 
                                     balsa = new Balsa(marcaB, nombreB, anoB, movBal);
                                     balsa.setOpcion(movBal);
-                                    balsa.mostrarInfo();
+                                    listaVehiculos.add(balsa);
+                                    System.out.println("Sus datos ha sido agregados exitosamente");
                                     tipoV = 2;
                                     break;
 
@@ -119,7 +124,8 @@ public class ProyectoProgramacion1 {
                                     String nombreA = scanner.nextLine();
 
                                     avion = new Avion(marcaA, nombreA, anoA, pasajeros);
-                                    avion.mostrarInfo();
+                                    listaVehiculos.add(avion);
+                                    System.out.println("Sus datos ha sido agregados exitosamente");
                                     tipoV = 3;
                                     break;
 
@@ -130,17 +136,13 @@ public class ProyectoProgramacion1 {
                             break;
 
                         case 2: //Mostrar Datos Vehiculos
-                            if (tipoV == 1) {
-                                carro.mostrarInfo();
-                            }
-                            if (tipoV == 2) {
-                                balsa.mostrarInfo();
-                            }
-                            if (tipoV == 3) {
-                                avion.mostrarInfo();
-                            }
-                            if (tipoV != 1 && tipoV != 2 && tipoV != 3) {
-                                System.out.println("No existen datos de vehiculos ingresados, por favor ingrese uno");
+                            if (listaVehiculos.isEmpty()) {
+                                System.out.println("No existen datos ingresados, por favor ingrese uno :)");
+                            } else {
+                                for (vehiculo vehiculo : listaVehiculos) {
+                                    vehiculo.mostrarInfo();
+                                    System.out.println("");
+                                }
                             }
                             break;
 
