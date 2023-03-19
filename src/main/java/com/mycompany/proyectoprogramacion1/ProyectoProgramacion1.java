@@ -42,7 +42,7 @@ public class ProyectoProgramacion1 {
                                 scanner.nextLine();
 
                                 if(opcom == 1){comV = "Diesel";}
-                                if(opcom == 2){comV = "Gasolina";}
+                                else if(opcom == 2){comV = "Gasolina";}
                                 else{comV = "Invalido";}
 
                                 System.out.print("Ingrese la Marca del Vehiculo: ");
@@ -71,7 +71,7 @@ public class ProyectoProgramacion1 {
                                 scanner.nextLine();
 
                                 if(opBal == 1){movBal = "Motor";}
-                                if(opBal == 2){movBal = "Remo";}
+                                else if(opBal == 2){movBal = "Remo";}
                                 else{movBal = "Invalido";}
 
                                 System.out.print("Ingrese la marca de la Balsa: ");
