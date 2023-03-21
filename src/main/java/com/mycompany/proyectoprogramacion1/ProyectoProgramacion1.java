@@ -146,30 +146,44 @@ public class ProyectoProgramacion1 {
                             }
                             break;
 
-                        case 3: //Torres de Hanoi
+                            case 3: //Torres de Hanoi
 
-                            Scanner sc = new Scanner(System.in);
-                            int n;
+                            int n = 0;
+                            Boolean opcionHanoi = true;
+                            int x = 0;
 
                             do {
-                                System.out.print("Ingrese el número de discos (mínimo 3): ");
-                                n = sc.nextInt();
-                                if (n < 3) {
-                                    System.out.println("Debe ingresar un mínimo de 3 discos para realizar la Torre de Hanoi.");
+                                while (n < 3) {
+                                    try {
+                                        System.out.print("Ingrese la cantidad de discos (mínimo 3): ");
+                                        n = scanner.nextInt();
+
+                                        if (n < 3) {
+                                            System.out.println("Debe ingresar un mínimo de 3 discos para realizar la torre.");
+                                        }
+                                    } catch (NumberFormatException e) {
+                                        System.out.println("Debe ingresar un número entero.");
+                                    }
                                 }
-                            } while (n < 3);
 
-                            int[][] torres = new int[3][n];
-                            TorreDeHanoi.llenarTorreInicial(torres);
-                            TorreDeHanoi.imprimirTorres(torres);
-                            TorreDeHanoi.resolverTorreDeHanoi(n, 0, 2, 1, torres);
+                                TorreDeHanoi torre = new TorreDeHanoi(1, 2, 3);
+                                torre.ResolverTorreDeHanoi(n, 1, 2, 3);
+                                System.out.println("Quiere volver a utilizar la torre de Hanoi?");
+                                System.out.println("1.si 2.No");
+                                x = scanner.nextInt();
+                                n = 0;
+                                if (x == 2) {
+                                    opcionHanoi = false;
 
+                                };
+
+                                 } while (opcionHanoi);
                             break;
 
                         case 4: // Menu Principal
                             menu1 = true;
                             break;
-                    }
+                     }
                     break;
 
                 case 2: //Fase 2
