@@ -17,7 +17,6 @@ public class ProyectoProgramacion1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); //Esta linea es para poder ingresar datos
         boolean menu1 = true;
-        int tipoV = 0;
         Carro carro = null;
         Balsa balsa = null;
         Avion avion = null;
@@ -71,7 +70,6 @@ public class ProyectoProgramacion1 {
                                     carro.setTipoCombustible(comV);
                                     listaVehiculos.add(carro);
                                     System.out.println("Sus datos ha sido agregados exitosamente");
-                                    tipoV = 1;
                                     break;
 
                                 case 2: //Balsa--
@@ -105,7 +103,6 @@ public class ProyectoProgramacion1 {
                                     balsa.setOpcion(movBal);
                                     listaVehiculos.add(balsa);
                                     System.out.println("Sus datos ha sido agregados exitosamente");
-                                    tipoV = 2;
                                     break;
 
                                 case 3: //Avion
@@ -126,7 +123,6 @@ public class ProyectoProgramacion1 {
                                     avion = new Avion(marcaA, nombreA, anoA, pasajeros);
                                     listaVehiculos.add(avion);
                                     System.out.println("Sus datos ha sido agregados exitosamente");
-                                    tipoV = 3;
                                     break;
 
                                 default:
@@ -203,7 +199,7 @@ public class ProyectoProgramacion1 {
                     break;
             }
         } while (menu1 == true);
-
+        scanner.close();
     }
 
     public static void menuPrincipal() {
