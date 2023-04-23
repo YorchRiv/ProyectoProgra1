@@ -113,7 +113,7 @@ public class ProyectoProgramacion1 {
 
                                     System.out.print("Ingrese el Ano de lanzamiento: ");
                                     int anoV = scanner.nextInt();
-                                    scanner.nextLine();                                
+                                    scanner.nextLine();
 
                                     do {
                                         System.out.print("El identificador es: ");
@@ -135,6 +135,8 @@ public class ProyectoProgramacion1 {
                                                 listaVehiculos.add(carro);
                                             } else {
                                                 System.out.println("NO SE PUEDEN AGREGAR MAS VEHICULOS");
+                                                regresarArreglos = false;
+                                                break;
                                             }
                                             System.out.println("Desea ingresar otro carro? 1.Si 2.No");
                                             validar = scanner.nextInt();
@@ -151,7 +153,7 @@ public class ProyectoProgramacion1 {
                                                     break;
                                             }
                                         }
-                                    } while (compararIdentificador(listaVehiculos, intefiV)== false);
+                                    } while (compararIdentificador(listaVehiculos, intefiV) == false);
 
                                 } while (regresarArreglos == true);
                                 break;
@@ -179,99 +181,117 @@ public class ProyectoProgramacion1 {
                                     System.out.print("Ingrese el anio de lanzamiento: ");
                                     int anoB = scanner.nextInt();
                                     scanner.nextLine();
+                                    do {
 
-                                    System.out.print("El identificador es: ");
-                                    intefiB = scanner.nextInt();
-                                    scanner.nextLine();
+                                        System.out.print("El identificador es: ");
+                                        intefiB = scanner.nextInt();
+                                        scanner.nextLine();
+                                        if (compararIdentificador(listaVehiculos, intefiB)) {
+                                            System.out.println("INGRESE UN VALOR NO REPETIDO.");
 
-                                    System.out.print("Ingrese nombre a registrar: ");
-                                    String nombreB = scanner.nextLine();
+                                        } else {
+                                            System.out.print("Ingrese nombre a registrar: ");
+                                            String nombreB = scanner.nextLine();
 
-                                    if (listaVehiculos.size() < 10) {
-                                        balsa = new Balsa(marcaB, nombreB, intefiB, anoB, movBal);
-                                        balsa.setOpcion(movBal);
-                                        listaVehiculos.add(balsa);
-                                    } else {
-                                        System.out.println("NO SE PUEDEN AGREGAR MAS VEHICULOS");
-                                    }
+                                            if (listaVehiculos.size() < 10) {
+                                                balsa = new Balsa(marcaB, nombreB, intefiB, anoB, movBal);
+                                                balsa.setOpcion(movBal);
+                                                listaVehiculos.add(balsa);
+                                            } else {
+                                                System.out.println("NO SE PUEDEN AGREGAR MAS VEHICULOS");
+                                                regresarArreglos = false;
+                                                break;
+                                            }
 
-                                    System.out.println("Desea ingresar otra Balsa? 1.Si 2.No");
-                                    validar = scanner.nextInt();
-                                    switch (validar) {
-                                        case 1:
-                                            regresarArreglos = true;
-                                            break;
-                                        case 2:
-                                            regresarArreglos = false;
-                                            break;
-                                        default:
-                                            System.out.println("Ingrese una opción valida.");
-                                            regresarArreglos = false;
-                                            break;
-                                    }
+                                            System.out.println("Desea ingresar otra Balsa? 1.Si 2.No");
+                                            validar = scanner.nextInt();
+                                            switch (validar) {
+                                                case 1:
+                                                    regresarArreglos = true;
+                                                    break;
+                                                case 2:
+                                                    regresarArreglos = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("Ingrese una opción valida.");
+                                                    regresarArreglos = false;
+                                                    break;
+                                            }
+                                        }
+
+                                    } while (compararIdentificador(listaVehiculos, intefiB) == false);
                                 } while (regresarArreglos == true);
                                 break;
                             case 3:
                                 do {
+                                    int intefiA = 0;
                                     System.out.print("Ingrese la Cantidad de Pasajeros del Avion:");
                                     int pasajeros = scanner.nextInt();
                                     scanner.nextLine();
 
                                     System.out.print("Ingrese la marca del Avion: ");
                                     String marcaA = scanner.nextLine();
+                                    do {
 
-                                    System.out.print("El identificador es: ");
-                                    int intefiA = scanner.nextInt();
-                                    scanner.nextLine();
+                                        System.out.print("El identificador es: ");
+                                        intefiA = scanner.nextInt();
+                                        scanner.nextLine();
+                                        if (compararIdentificador(listaVehiculos, intefiA)) {
+                                        } else {
+                                            System.out.print("Ingrese el anio de lanzamiento: ");
+                                            int anoA = scanner.nextInt();
+                                            scanner.nextLine();
 
-                                    System.out.print("Ingrese el anio de lanzamiento: ");
-                                    int anoA = scanner.nextInt();
-                                    scanner.nextLine();
+                                            System.out.print("Ingrese nombre a registrar: ");
+                                            String nombreA = scanner.nextLine();
 
-                                    System.out.print("Ingrese nombre a registrar: ");
-                                    String nombreA = scanner.nextLine();
+                                            if (listaVehiculos.size() < 10) {
+                                                avion = new Avion(marcaA, nombreA, intefiA, anoA, pasajeros);
+                                                listaVehiculos.add(avion);
+                                            } else {
+                                                System.out.println("NO SE PUEDEN AGREGAR MAS VEHICULOS");
+                                                regresarArreglos = false;
+                                                break;
+                                            }
 
-                                    if (listaVehiculos.size() < 10) {
-                                        avion = new Avion(marcaA, nombreA, intefiA, anoA, pasajeros);
-                                        listaVehiculos.add(avion);
-                                    } else {
-                                        System.out.println("NO SE PUEDEN AGREGAR MAS VEHICULOS");
-                                    }
+                                            System.out.println("Desea ingresar otra Balsa? 1.Si 2.No");
+                                            validar = scanner.nextInt();
+                                            switch (validar) {
+                                                case 1:
+                                                    regresarArreglos = true;
+                                                    break;
+                                                case 2:
+                                                    regresarArreglos = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("Ingrese una opción valida.");
+                                                    regresarArreglos = false;
+                                                    break;
+                                            }
+                                        }
 
-                                    System.out.println("Desea ingresar otra Balsa? 1.Si 2.No");
-                                    validar = scanner.nextInt();
-                                    switch (validar) {
-                                        case 1:
-                                            regresarArreglos = true;
-                                            break;
-                                        case 2:
-                                            regresarArreglos = false;
-                                            break;
-                                        default:
-                                            System.out.println("Ingrese una opción valida.");
-                                            regresarArreglos = false;
-                                            break;
-                                    }
+                                    } while (compararIdentificador(listaVehiculos, intefiA) == false);
                                 } while (regresarArreglos == true);
                                 break;
                             case 4:
                                 do {
-                                Collections.sort(listaVehiculos, (vehiculo v1, vehiculo v2) -> v1.getIdentificador() - v2.getIdentificador());
-                                System.out.println("LISTA ORDENADA.");
-                                regresarArreglos = false;
+                                    Collections.sort(listaVehiculos, (vehiculo v1, vehiculo v2) -> v1.getIdentificador() - v2.getIdentificador());
+                                    System.out.println("LISTA ORDENADA.");
+                                    regresarArreglos = false;
                                 } while (regresarArreglos == true);
                                 break;
                             case 5:
-                            do {
-                                if (listaVehiculos.isEmpty()) {
-                                    System.out.println("No existen datos ingresados, por favor ingrese uno :)");
-                                } else {
-                                    for (vehiculo vehiculo : listaVehiculos) {
-                                        vehiculo.mostrarInfo();
-                                        System.out.println("---------------------");
+                                do {
+                                    if (listaVehiculos.isEmpty()) {
+                                        System.out.println("No existen datos ingresados, por favor ingrese uno :)");
+                                    } else {
+                                        for (vehiculo vehiculo : listaVehiculos) {
+                                            System.out.println("---------------------");
+                                            vehiculo.mostrarInfo();
+                                            System.out.println("---------------------");
+                                        }
                                     }
-                                }
-                                regresarArreglos = false;
+                                    regresarArreglos = false;
                                 } while (regresarArreglos == true);
                                 break;
                             case 6:
