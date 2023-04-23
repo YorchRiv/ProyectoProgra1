@@ -13,13 +13,15 @@ public class vehiculo {
 
     private String marca;
     private String nombre;
+    private int identificador;
     private int ano;
 
     //Constructor
-    public vehiculo(String marca, String nombre, int ano) {
+    public vehiculo(String marca, String nombre,int identificador, int ano) {
         this.marca = marca;
         this.nombre = nombre;
         this.ano = ano;
+        this.identificador = identificador;
     }
 
     //Getters
@@ -34,6 +36,15 @@ public class vehiculo {
     public int getAno() {
         return ano;
     }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+    
 
     //Setters
     public void setMarca(String marca) {
@@ -50,9 +61,11 @@ public class vehiculo {
 
     //Metodos
     public void mostrarInfo() {
+        System.out.println("Identificador: " + identificador );
         System.out.println("Marca: " + marca);
         System.out.println("Propietario: " + nombre);
         System.out.println("Ano Lanzamiento: " + ano);
     }
-
 }
+
+

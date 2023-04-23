@@ -14,8 +14,8 @@ public class Carro extends vehiculo{
     private String tipoCom;
 
     //Constructor
-    public Carro(String marca, String nombre, int ano, String placa, String tipoCom){
-        super(marca, nombre, ano);
+    public Carro(String marca, String nombre, int identificador, int ano, String placa, String tipoCom){
+        super(marca, nombre, identificador, ano);
         this.placa = placa;
         this.tipoCom = tipoCom;
     }
@@ -39,6 +39,7 @@ public class Carro extends vehiculo{
 
 
     //Metodos
+    @Override
     public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("Placa: " + placa);

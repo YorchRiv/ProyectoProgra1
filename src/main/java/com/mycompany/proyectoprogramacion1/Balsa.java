@@ -11,11 +11,11 @@ package com.mycompany.proyectoprogramacion1;
 public class Balsa extends vehiculo{
     private String  opcionBalsa;
     
-    public Balsa( String marca, String nombre, int ano, String opcionBalsa){
-        super(marca, nombre, ano);
+    public Balsa( String marca, String nombre, int identificador, int ano, String opcionBalsa){
+        super(marca, nombre, identificador, ano);
         this.opcionBalsa = opcionBalsa;
     }
-    
+
     public String getOpcion(){
         return opcionBalsa;
     }
@@ -24,6 +24,7 @@ public class Balsa extends vehiculo{
         this.opcionBalsa = opcionBalsa;
     }
     
+    @Override
     public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("La balsa se mueve por: " + opcionBalsa);

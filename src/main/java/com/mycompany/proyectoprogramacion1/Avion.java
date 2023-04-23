@@ -11,8 +11,8 @@ package com.mycompany.proyectoprogramacion1;
 public class Avion extends vehiculo{
     private int  numPasajeros;
     
-    public Avion( String marca, String nombre, int ano, int numPasajeros){
-        super(marca, nombre, ano);
+    public Avion( String marca, String nombre, int identificador, int ano, int numPasajeros){
+        super(marca, nombre, identificador,  ano);
         this.numPasajeros = numPasajeros;
         
     }
@@ -25,6 +25,7 @@ public class Avion extends vehiculo{
         this.numPasajeros = numPasajeros;
     }
     
+    @Override
     public void mostrarInfo(){
         super.mostrarInfo();
         System.out.println("El numero de pasajeros es: " + numPasajeros);
