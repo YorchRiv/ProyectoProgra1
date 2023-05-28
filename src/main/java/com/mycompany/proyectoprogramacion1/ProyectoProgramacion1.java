@@ -33,6 +33,7 @@ public class ProyectoProgramacion1 {
         Scanner scanner = new Scanner(System.in); //Esta linea es para poder ingresar datos
         boolean menu1 = true;
         boolean menu2 = true;
+        boolean menudb = true;
         Carro carro = null;
         Balsa balsa = null;
         Avion avion = null;
@@ -314,302 +315,322 @@ public class ProyectoProgramacion1 {
                     } while (menu2 == true);
                     break;
 
-                case 3: //Fase 3                   
-                    System.out.println("1.) Trabajar con carros");
-                    System.out.println("2.) Trabajar con balsas");
-                    System.out.println("3.) Trabajar con aviones");
-                    System.out.print("Seleccione una opcion: ");
-                    int opmen = scanner.nextInt();
-                    scanner.nextLine();
-                    switch (opmen) {
-                        case 1:
-                            System.out.println("Trabajaremos con Carros");
-                            System.out.println("1.) Insertar");
-                            System.out.println("2.) Consultar");
-                            System.out.println("3.) Actualizar");
-                            System.out.println("4.) Borrar");
-                            System.out.print("Seleccione una opcion: ");
-                            opmen = scanner.nextInt();
-                            switch (opmen) {
-                                case 1: //Insertar Carros
-                                    System.out.println("Insertar Carro");
-                                    Carros car = new Carros();
+                case 3: //Fase 3 - Base de datos
+                    do {
+                        System.out.println("1.) Trabajar con carros");
+                        System.out.println("2.) Trabajar con balsas");
+                        System.out.println("3.) Trabajar con aviones");
+                        System.out.println("4.) Regresar al menu anterior");
+                        System.out.print("Seleccione una opcion: ");
+                        int opmen = scanner.nextInt();
+                        scanner.nextLine();
+                        switch (opmen) {
+                            case 1:
+                                System.out.println("Trabajaremos con Carros");
+                                System.out.println("1.) Insertar");
+                                System.out.println("2.) Consultar");
+                                System.out.println("3.) Actualizar");
+                                System.out.println("4.) Borrar");
+                                System.out.println("5.) Volver al menu principal");
+                                System.out.print("Seleccione una opcion: ");
+                                opmen = scanner.nextInt();
+                                switch (opmen) {
+                                    case 1: //Insertar Carros
+                                        System.out.println("Insertar Carro");
+                                        Carros car = new Carros();
 
-                                    int opcom = 0;
-                                    while (opcom != 1 && opcom != 2) {
-                                        System.out.println("¿Qué tipo de combustible usa el carro?:");
-                                        System.out.println("1. Diesel");
-                                        System.out.println("2. Gasolina");
-                                        opcom = scanner.nextInt();
-                                        scanner.nextLine();
-
-                                        if (opcom == 1 || opcom == 2) {
-
-                                            System.out.print("Ingrese la Marca del Vehiculo: ");
-                                            String marcaV = scanner.nextLine();
-
-                                            System.out.print("Ingrese el Año de lanzamiento: ");
-                                            int anoV = scanner.nextInt();
+                                        int opcom = 0;
+                                        while (opcom != 1 && opcom != 2) {
+                                            System.out.println("¿Qué tipo de combustible usa el carro?:");
+                                            System.out.println("1. Diesel");
+                                            System.out.println("2. Gasolina");
+                                            opcom = scanner.nextInt();
                                             scanner.nextLine();
 
-                                            System.out.print("Ingrese la Placa del Vehiculo: ");
-                                            String placaV = scanner.nextLine();
+                                            if (opcom == 1 || opcom == 2) {
 
-                                            System.out.print("Ingrese el nombre a registrar: ");
-                                            String nombreV = scanner.nextLine();
+                                                System.out.print("Ingrese la Marca del Vehiculo: ");
+                                                String marcaV = scanner.nextLine();
 
-                                            System.out.println("");
-                                            System.out.println("Resumen: ");
-                                            System.out.println("Marca: " + marcaV);
-                                            System.out.println("Nombre: " + nombreV);
-                                            System.out.println("Anio: " + anoV);
-                                            System.out.println("Placa: " + placaV);
-                                            System.out.println("Tipo de Combustible: " + opcom);
-                                            System.out.println("");
-                                            System.out.print("Confirmar 1.)Si 2.)No: ");
-                                            int opconfirmar = scanner.nextInt();
+                                                System.out.print("Ingrese el Año de lanzamiento: ");
+                                                int anoV = scanner.nextInt();
+                                                scanner.nextLine();
 
-                                            switch (opconfirmar) {
-                                                case 1:
-                                                    car.setTipoCombustible(opcom);
-                                                    car.setMarca(marcaV);
-                                                    car.setAnio(anoV);
-                                                    car.setPlaca(placaV);
-                                                    car.setNombre(nombreV);
-                                                    try {
-                                                        em.getTransaction().begin();
-                                                        em.persist(car);
-                                                        em.getTransaction().commit();
-                                                        System.out.println("Id: " + car.getCarroID());
-                                                        System.out.println("Enviado a la base de datos :D");
-                                                    } catch (Exception e) {
-                                                        em.getTransaction().rollback();
-                                                        e.printStackTrace();
-                                                        System.out.println("Ha ocurrido un error :(");
-                                                    } finally {
-                                                        em.close();
-                                                    }
-                                                    break;
+                                                System.out.print("Ingrese la Placa del Vehiculo: ");
+                                                String placaV = scanner.nextLine();
 
-                                                case 2:
-                                                    System.out.println("Operacion Cancelada");
-                                                    break;
+                                                System.out.print("Ingrese el nombre a registrar: ");
+                                                String nombreV = scanner.nextLine();
 
-                                                default:
-                                                    System.out.println("Operacion Cancelada");
-                                                    break;
-                                            }
-                                        } else {
-                                            System.out.println("Opción inválida, intentelo de nuevo");
-                                        }
-                                    }
-                                    menu2 = false;
-                                    break;
+                                                System.out.println("");
+                                                System.out.println("Resumen: ");
+                                                System.out.println("Marca: " + marcaV);
+                                                System.out.println("Nombre: " + nombreV);
+                                                System.out.println("Anio: " + anoV);
+                                                System.out.println("Placa: " + placaV);
+                                                System.out.println("Tipo de Combustible: " + opcom);
+                                                System.out.println("");
+                                                System.out.print("Confirmar 1.)Si 2.)No: ");
+                                                int opconfirmar = scanner.nextInt();
 
-                                case 2: //Leer Carros
-                                    System.out.println("Seleccionar Carros");
-                                    List<Carros> lstCarros = new ArrayList<>();
-                                    CarrosJpaController ac = new CarrosJpaController(emf);
-                                    try {
-                                        lstCarros = ac.findCarrosEntities();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    } finally {
-                                        em.close();
-                                    }
-
-                                    for (Carros ca : lstCarros) {
-                                        System.out.println("Id: " + ca.getCarroID());
-                                        System.out.println("Marca: " + ca.getMarca());
-                                        System.out.println("Nombre: " + ca.getNombre());
-                                        System.out.println("Anio: " + ca.getNombre());
-                                        System.out.println("Placa: " + ca.getPlaca());
-                                        System.out.println("Tipo de Combustible: " + ca.getTipoCombustible());
-                                        System.out.println("---------------------------");
-                                    }
-                                    break;
-
-                                case 3: //Actualizar Carros
-                                    System.out.println("Actualizar Carros");
-                                    System.out.print("Ingrese el ID del carro: ");
-                                    int carroID = scanner.nextInt();
-                                    scanner.nextLine();
-
-                                    CarrosJpaController ac1 = new CarrosJpaController(emf);
-                                    Carros carroUp = null;
-
-                                    try {
-                                        carroUp = ac1.findCarros(carroID);
-
-                                        if (carroUp != null) {
-                                            System.out.println("Id: " + carroUp.getCarroID());
-                                            System.out.println("Marca: " + carroUp.getMarca());
-                                            System.out.println("Nombre: " + carroUp.getNombre());
-                                            System.out.println("Año: " + carroUp.getAnio());
-                                            System.out.println("Placa: " + carroUp.getPlaca());
-                                            System.out.println("Tipo de Combustible: " + carroUp.getTipoCombustible());
-                                            System.out.println("---------------------------");
-                                            System.out.println("Desea Actualizar la información?: 1.)Si 2.)No");
-                                            int opUp = scanner.nextInt();
-                                            scanner.nextLine();
-                                            int opcomUp = 0;
-                                            if (opUp == 1) {
-                                                while (opcomUp != 1 && opcomUp != 2) {
-                                                    System.out.println("¿Qué tipo de combustible usa el carro?:");
-                                                    System.out.println("1. Diesel");
-                                                    System.out.println("2. Gasolina");
-                                                    opcomUp = scanner.nextInt();
-                                                    scanner.nextLine();
-
-                                                    if (opcomUp == 1 || opcomUp == 2) {
-
-                                                        System.out.print("Ingrese la Marca del Vehiculo: ");
-                                                        String marcaV = scanner.nextLine();
-
-                                                        System.out.print("Ingrese el Año de lanzamiento: ");
-                                                        int anoV = scanner.nextInt();
-                                                        scanner.nextLine();
-
-                                                        System.out.print("Ingrese la Placa del Vehiculo: ");
-                                                        String placaV = scanner.nextLine();
-
-                                                        System.out.print("Ingrese el nombre a registrar: ");
-                                                        String nombreV = scanner.nextLine();
-
-                                                        System.out.println("");
-                                                        System.out.println("Resumen: ");
-                                                        System.out.println("Marca: " + marcaV);
-                                                        System.out.println("Nombre: " + nombreV);
-                                                        System.out.println("Año: " + anoV);
-                                                        System.out.println("Placa: " + placaV);
-                                                        System.out.println("Tipo de Combustible: " + opcomUp);
-                                                        System.out.println("");
-                                                        System.out.print("Confirmar 1.)Si 2.)No: ");
-                                                        int opconfirmar = scanner.nextInt();
-
-                                                        switch (opconfirmar) {
-                                                            case 1:
-                                                                carroUp.setTipoCombustible(opcomUp);
-                                                                carroUp.setMarca(marcaV);
-                                                                carroUp.setAnio(anoV);
-                                                                carroUp.setPlaca(placaV);
-                                                                carroUp.setNombre(nombreV);
-
-                                                                try {
-                                                                    em.getTransaction().begin();
-                                                                    em.merge(carroUp);  // Actualiza la entidad existente
-                                                                    em.getTransaction().commit();
-                                                                    System.out.println("Id: " + carroUp.getCarroID());
-                                                                    System.out.println("Actualización enviada a la base de datos :D");
-                                                                } catch (Exception e) {
-                                                                    em.getTransaction().rollback();
-                                                                    e.printStackTrace();
-                                                                    System.out.println("Ha ocurrido un error :(");
-                                                                }
-                                                                break;
-
-                                                            case 2:
-                                                                System.out.println("Operacion Cancelada");
-                                                                break;
-
-                                                            default:
-                                                                System.out.println("Operacion Cancelada");
-                                                                break;
+                                                switch (opconfirmar) {
+                                                    case 1:
+                                                        car.setTipoCombustible(opcom);
+                                                        car.setMarca(marcaV);
+                                                        car.setAnio(anoV);
+                                                        car.setPlaca(placaV);
+                                                        car.setNombre(nombreV);
+                                                        try {
+                                                            em.getTransaction().begin();
+                                                            em.persist(car);
+                                                            em.getTransaction().commit();
+                                                            System.out.println("Id: " + car.getCarroID());
+                                                            System.out.println("Enviado a la base de datos :D");
+                                                        } catch (Exception e) {
+                                                            em.getTransaction().rollback();
+                                                            e.printStackTrace();
+                                                            System.out.println("Ha ocurrido un error :(");
+                                                        } finally {
+                                                            em.close();
                                                         }
-                                                    } else {
-                                                        System.out.println("Opción inválida, intentelo de nuevo");
-                                                    }
+                                                        break;
+
+                                                    case 2:
+                                                        System.out.println("Operacion Cancelada");
+                                                        break;
+
+                                                    default:
+                                                        System.out.println("Operacion Cancelada");
+                                                        break;
                                                 }
                                             } else {
-                                                System.out.println("Operacion Cancelada");
+                                                System.out.println("Opción inválida, intentelo de nuevo");
                                             }
-                                        } else {
-                                            System.out.println("No se encontró ningún carro con el carroID especificado.");
                                         }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    } finally {
-                                        if (em != null && em.isOpen()) {
+                                        menu2 = false;
+                                        break;
+
+                                    case 2: //Leer Carros
+                                        System.out.println("Seleccionar Carros");
+                                        List<Carros> lstCarros = new ArrayList<>();
+                                        CarrosJpaController ac = new CarrosJpaController(emf);
+                                        try {
+                                            lstCarros = ac.findCarrosEntities();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        } finally {
                                             em.close();
                                         }
-                                    }
-                                    break;
 
-                                case 4: //Borrar Carros
-                                    System.out.println("Borrar Carros");
-                                    System.out.print("Ingrese el ID del carro: ");
-                                    int carroIDDl = scanner.nextInt();
-                                    scanner.nextLine();
+                                        if (lstCarros.isEmpty() == false) {
+                                            for (Carros ca : lstCarros) {
+                                                System.out.println("Id: " + ca.getCarroID());
+                                                System.out.println("Marca: " + ca.getMarca());
+                                                System.out.println("Nombre: " + ca.getNombre());
+                                                System.out.println("Anio: " + ca.getNombre());
+                                                System.out.println("Placa: " + ca.getPlaca());
+                                                System.out.println("Tipo de Combustible: " + ca.getTipoCombustible());
+                                                System.out.println("---------------------------");
+                                            }
+                                        } else {
+                                            System.out.println("No hay datos para mostrar");
+                                        }
+                                        break;
 
-                                    CarrosJpaController ac2 = new CarrosJpaController(emf);
-                                    Carros carroDl = null;
+                                    case 3: //Actualizar Carros
+                                        System.out.println("Actualizar Carros");
+                                        System.out.print("Ingrese el ID del carro: ");
+                                        int carroID = scanner.nextInt();
+                                        scanner.nextLine();
 
-                                    try {
-                                        carroDl = ac2.findCarros(carroIDDl);
+                                        CarrosJpaController ac1 = new CarrosJpaController(emf);
+                                        Carros carroUp = null;
 
-                                        if (carroDl != null) {
-                                            System.out.println("Id: " + carroDl.getCarroID());
-                                            System.out.println("Marca: " + carroDl.getMarca());
-                                            System.out.println("Nombre: " + carroDl.getNombre());
-                                            System.out.println("Año: " + carroDl.getAnio());
-                                            System.out.println("Placa: " + carroDl.getPlaca());
-                                            System.out.println("Tipo de Combustible: " + carroDl.getTipoCombustible());
-                                            System.out.println("---------------------------");
-                                            System.out.println("Desea Eliminar este Registro?: 1.)Si 2.)No");
-                                            int opDl = scanner.nextInt();
-                                            scanner.nextLine();
-                                            if (opDl == 1) {
-                                                try {
-                                                    ac2.destroy(carroIDDl);
-                                                    System.out.println("El carro con ID " + carroIDDl + " ha sido borrado correctamente.");
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                    System.out.println("Error al intentar borrar el carro.");
+                                        try {
+                                            carroUp = ac1.findCarros(carroID);
+
+                                            if (carroUp != null) {
+                                                System.out.println("Id: " + carroUp.getCarroID());
+                                                System.out.println("Marca: " + carroUp.getMarca());
+                                                System.out.println("Nombre: " + carroUp.getNombre());
+                                                System.out.println("Año: " + carroUp.getAnio());
+                                                System.out.println("Placa: " + carroUp.getPlaca());
+                                                System.out.println("Tipo de Combustible: " + carroUp.getTipoCombustible());
+                                                System.out.println("---------------------------");
+                                                System.out.println("Desea Actualizar la información?: 1.)Si 2.)No");
+                                                int opUp = scanner.nextInt();
+                                                scanner.nextLine();
+                                                int opcomUp = 0;
+                                                if (opUp == 1) {
+                                                    while (opcomUp != 1 && opcomUp != 2) {
+                                                        System.out.println("¿Qué tipo de combustible usa el carro?:");
+                                                        System.out.println("1. Diesel");
+                                                        System.out.println("2. Gasolina");
+                                                        opcomUp = scanner.nextInt();
+                                                        scanner.nextLine();
+
+                                                        if (opcomUp == 1 || opcomUp == 2) {
+
+                                                            System.out.print("Ingrese la Marca del Vehiculo: ");
+                                                            String marcaV = scanner.nextLine();
+
+                                                            System.out.print("Ingrese el Año de lanzamiento: ");
+                                                            int anoV = scanner.nextInt();
+                                                            scanner.nextLine();
+
+                                                            System.out.print("Ingrese la Placa del Vehiculo: ");
+                                                            String placaV = scanner.nextLine();
+
+                                                            System.out.print("Ingrese el nombre a registrar: ");
+                                                            String nombreV = scanner.nextLine();
+
+                                                            System.out.println("");
+                                                            System.out.println("Resumen: ");
+                                                            System.out.println("Marca: " + marcaV);
+                                                            System.out.println("Nombre: " + nombreV);
+                                                            System.out.println("Año: " + anoV);
+                                                            System.out.println("Placa: " + placaV);
+                                                            System.out.println("Tipo de Combustible: " + opcomUp);
+                                                            System.out.println("");
+                                                            System.out.print("Confirmar 1.)Si 2.)No: ");
+                                                            int opconfirmar = scanner.nextInt();
+
+                                                            switch (opconfirmar) {
+                                                                case 1:
+                                                                    carroUp.setTipoCombustible(opcomUp);
+                                                                    carroUp.setMarca(marcaV);
+                                                                    carroUp.setAnio(anoV);
+                                                                    carroUp.setPlaca(placaV);
+                                                                    carroUp.setNombre(nombreV);
+
+                                                                    try {
+                                                                        em.getTransaction().begin();
+                                                                        em.merge(carroUp);  // Actualiza la entidad existente
+                                                                        em.getTransaction().commit();
+                                                                        System.out.println("Id: " + carroUp.getCarroID());
+                                                                        System.out.println("Actualización enviada a la base de datos :D");
+                                                                    } catch (Exception e) {
+                                                                        em.getTransaction().rollback();
+                                                                        e.printStackTrace();
+                                                                        System.out.println("Ha ocurrido un error :(");
+                                                                    }
+                                                                    break;
+
+                                                                case 2:
+                                                                    System.out.println("Operacion Cancelada");
+                                                                    break;
+
+                                                                default:
+                                                                    System.out.println("Operacion Cancelada");
+                                                                    break;
+                                                            }
+                                                        } else {
+                                                            System.out.println("Opción inválida, intentelo de nuevo");
+                                                        }
+                                                    }
+                                                } else {
+                                                    System.out.println("Operacion Cancelada");
                                                 }
                                             } else {
-                                                System.out.println("Operación Cancelada.");
+                                                System.out.println("No se encontró ningún carro con el carroID especificado.");
                                             }
-
-                                        } else {
-                                            System.out.println("No se encontró ningún carro con el carroID especificado.");
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            if (em != null && em.isOpen()) {
+                                                em.close();
+                                            }
                                         }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    } finally {
-                                        if (emf != null && emf.isOpen()) {
-                                            emf.close();
+                                        break;
+
+                                    case 4: //Borrar Carros
+                                        System.out.println("Borrar Carros");
+                                        System.out.print("Ingrese el ID del carro: ");
+                                        int carroIDDl = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        CarrosJpaController ac2 = new CarrosJpaController(emf);
+                                        Carros carroDl = null;
+
+                                        try {
+                                            carroDl = ac2.findCarros(carroIDDl);
+
+                                            if (carroDl != null) {
+                                                System.out.println("Id: " + carroDl.getCarroID());
+                                                System.out.println("Marca: " + carroDl.getMarca());
+                                                System.out.println("Nombre: " + carroDl.getNombre());
+                                                System.out.println("Año: " + carroDl.getAnio());
+                                                System.out.println("Placa: " + carroDl.getPlaca());
+                                                System.out.println("Tipo de Combustible: " + carroDl.getTipoCombustible());
+                                                System.out.println("---------------------------");
+                                                System.out.println("Desea Eliminar este Registro?: 1.)Si 2.)No");
+                                                int opDl = scanner.nextInt();
+                                                scanner.nextLine();
+                                                if (opDl == 1) {
+                                                    try {
+                                                        ac2.destroy(carroIDDl);
+                                                        System.out.println("El carro con ID " + carroIDDl + " ha sido borrado correctamente.");
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                        System.out.println("Error al intentar borrar el carro.");
+                                                    }
+                                                } else {
+                                                    System.out.println("Operación Cancelada.");
+                                                }
+
+                                            } else {
+                                                System.out.println("No se encontró ningún carro con el carroID especificado.");
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            if (emf != null && emf.isOpen()) {
+                                                emf.close();
+                                            }
                                         }
-                                    }
-                                    
-                            }
+                                    default:
+                                        menudb = false;
+                                        break;
+                                        
+                                    case 5:
+                                        menudb = false;
+                                        break;
+                                }
+                                break;
 
-                            break;
+                            case 2:
+                                System.out.println("Trabajaremos con Balsas");
+                                System.out.println("1.) Insertar");
+                                System.out.println("2.) Consultar");
+                                System.out.println("3.) Actualizar");
+                                System.out.println("4.) Borrar");
+                                System.out.println("5.) Volver al menu principal");
+                                System.out.print("Seleccione una opcion: ");
+                                opmen = scanner.nextInt();
+                                break;
 
-                        case 2:
-                            System.out.println("Trabajaremos con Balsas");
-                            System.out.println("1.) Insertar");
-                            System.out.println("2.) Consultar");
-                            System.out.println("3.) Actualizar");
-                            System.out.println("4.) Borrar");
-                            System.out.print("Seleccione una opcion: ");
-                            opmen = scanner.nextInt();
-                            break;
-
-                        case 3:
-                            System.out.println("Trabajaremos con Aviones");
-                            System.out.println("1.) Insertar");
-                            System.out.println("2.) Consultar");
-                            System.out.println("3.) Actualizar");
-                            System.out.println("4.) Borrar");
-                            System.out.print("Seleccione una opcion: ");
-                            opmen = scanner.nextInt();
-                            break;
-
-                        default:
-                            System.out.println("Ha ocurrido un error");
-                            break;
-                    }
-
+                            case 3:
+                                System.out.println("Trabajaremos con Aviones");
+                                System.out.println("1.) Insertar");
+                                System.out.println("2.) Consultar");
+                                System.out.println("3.) Actualizar");
+                                System.out.println("4.) Borrar");
+                                System.out.println("5.) Volver al menu principal");
+                                System.out.print("Seleccione una opcion: ");
+                                opmen = scanner.nextInt();
+                                break;
+                            
+                            case 4:
+                                menu1 = true;
+                                menudb = false;
+                                break;
+                            default:
+                                System.out.println("Ha ocurrido un error");
+                                menudb = false;
+                                break;
+                        }                        
+                    } while (menudb == true);
+                    break;
                 case 4: //Salir
                     menu1 = false;
                     break;
@@ -626,7 +647,7 @@ public class ProyectoProgramacion1 {
         System.out.println("MENU PRINCIPAL");
         System.out.println("1.)Fase 1 - Recursividad");
         System.out.println("2.)Fase 2 - Arreglos");
-        System.out.println("3.)Fase 3");
+        System.out.println("3.)Fase 3 - Bases de datos");
         System.out.println("4.)Salir del Programa");
 
         System.out.print("Seleccione una Opcion: ");
