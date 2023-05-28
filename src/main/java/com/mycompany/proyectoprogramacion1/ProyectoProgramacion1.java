@@ -802,11 +802,11 @@ public class ProyectoProgramacion1 {
                                             }
                                         } catch (Exception e) {
                                             e.printStackTrace();
-                                        } finally {
+                                        } /*finally {
                                             if (em != null && em.isOpen()) {
                                                 em.close();
                                             }
-                                        }
+                                        }*/
                                         break;
 
                                     case 4: //Borrar Balsas
