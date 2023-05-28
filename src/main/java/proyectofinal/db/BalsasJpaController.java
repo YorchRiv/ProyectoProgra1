@@ -17,7 +17,7 @@ import proyectofinal.db.Balsas;
 
 /**
  *
- * @author Jorge Mejicanos
+ * @author luism
  */
 public class BalsasJpaController implements Serializable {
 

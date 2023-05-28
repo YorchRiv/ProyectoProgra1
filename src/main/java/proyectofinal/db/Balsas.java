@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Jorge Mejicanos
+ * @author luism
  */
 @Entity
 @Table(name = "Balsas", catalog = "vehiculos", schema = "dbo")
@@ -27,7 +27,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Balsas.findByMarca", query = "SELECT b FROM Balsas b WHERE b.marca = :marca"),
     @NamedQuery(name = "Balsas.findByNombre", query = "SELECT b FROM Balsas b WHERE b.nombre = :nombre"),
     @NamedQuery(name = "Balsas.findByAnio", query = "SELECT b FROM Balsas b WHERE b.anio = :anio"),
-    @NamedQuery(name = "Balsas.findByTipoCombustible", query = "SELECT b FROM Balsas b WHERE b.tipoCombustible = :tipoCombustible")})
+    @NamedQuery(name = "Balsas.findByMovimientoBalsa", query = "SELECT b FROM Balsas b WHERE b.movimientoBalsa = :movimientoBalsa")})
 public class Balsas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,8 +42,8 @@ public class Balsas implements Serializable {
     private String nombre;
     @Column(name = "Anio")
     private Integer anio;
-    @Column(name = "TipoCombustible")
-    private Integer tipoCombustible;
+    @Column(name = "movimientoBalsa")
+    private Integer movimientoBalsa;
 
     public Balsas() {
     }
@@ -84,12 +84,12 @@ public class Balsas implements Serializable {
         this.anio = anio;
     }
 
-    public Integer getTipoCombustible() {
-        return tipoCombustible;
+    public Integer getMovimientoBalsa() {
+        return movimientoBalsa;
     }
 
-    public void setTipoCombustible(Integer tipoCombustible) {
-        this.tipoCombustible = tipoCombustible;
+    public void setMovimientoBalsa(Integer movimientoBalsa) {
+        this.movimientoBalsa = movimientoBalsa;
     }
 
     @Override

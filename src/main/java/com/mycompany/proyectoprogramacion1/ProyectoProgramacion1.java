@@ -12,9 +12,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import proyectofinal.db.Aviones;
-import proyectofinal.db.Balsas;
 import proyectofinal.db.Carros;
+import proyectofinal.db.Balsas;
 import proyectofinal.db.CarrosJpaController;
+import proyectofinal.db.AvionesJpaController;
+import proyectofinal.db.BalsasJpaController;
 
 /**
  * @author Fernando Lopez
@@ -34,6 +36,7 @@ public class ProyectoProgramacion1 {
         boolean menu1 = true;
         boolean menu2 = true;
         boolean menudb = true;
+        boolean menudb2 = true;
         Carro carro = null;
         Balsa balsa = null;
         Avion avion = null;
@@ -390,7 +393,8 @@ public class ProyectoProgramacion1 {
                                                             em.getTransaction().rollback();
                                                             e.printStackTrace();
                                                             System.out.println("Ha ocurrido un error :(");
-                                                        } /*finally {
+                                                        }
+                                                        /*finally {
                                                             em.close();
                                                         }*/
                                                         break;
@@ -418,7 +422,8 @@ public class ProyectoProgramacion1 {
                                             lstCarros = ac.findCarrosEntities();
                                         } catch (Exception e) {
                                             e.printStackTrace();
-                                        } /*finally {
+                                        }
+                                        /*finally {
                                             em.close();
                                         }*/
 
@@ -583,7 +588,8 @@ public class ProyectoProgramacion1 {
                                             }
                                         } catch (Exception e) {
                                             e.printStackTrace();
-                                        } /*finally {
+                                        }
+                                    /*finally {
                                             if (emf != null && emf.isOpen()) {
                                                 emf.close();
                                             }
@@ -591,14 +597,14 @@ public class ProyectoProgramacion1 {
                                     default:
                                         menudb = false;
                                         break;
-                                        
+
                                     case 5:
                                         menudb = false;
                                         break;
                                 }
                                 break;
 
-                            case 2:
+                            case 2: //Trabajar con balsas
                                 System.out.println("Trabajaremos con Balsas");
                                 System.out.println("1.) Insertar");
                                 System.out.println("2.) Consultar");
@@ -607,6 +613,248 @@ public class ProyectoProgramacion1 {
                                 System.out.println("5.) Volver al menu principal");
                                 System.out.print("Seleccione una opcion: ");
                                 opmen = scanner.nextInt();
+                                switch (opmen) {
+                                    case 1: //insertar balsas
+                                        Balsas bal = new Balsas();
+                                        int intefiB = 0;
+                                        String movBal = "";
+                                        int opBal = 0;
+                                        while (opBal != 1 && opBal != 2) {
+                                            System.out.println("¿Cómo se moverá la balsa?:");
+                                            System.out.println("1. Remo");
+                                            System.out.println("2. Motor");
+                                            opBal = scanner.nextInt();
+                                            scanner.nextLine();
+
+                                            if (opBal == 1 || opBal == 2) {
+                                                System.out.print("Ingrese la Marca de la Balsa: ");
+                                                String marcaB = scanner.nextLine();
+
+                                                System.out.print("Ingrese el Año de lanzamiento: ");
+                                                int anoB = scanner.nextInt();
+                                                scanner.nextLine();
+
+                                                System.out.print("Ingrese el nombre a registrar: ");
+                                                String nombreB = scanner.nextLine();
+
+                                                System.out.println("");
+                                                System.out.println("Resumen: ");
+                                                System.out.println("Marca: " + marcaB);
+                                                System.out.println("Nombre: " + nombreB);
+                                                System.out.println("Anio: " + anoB);
+                                                System.out.println("Movimiento Balsa: " + opBal);
+                                                System.out.println("");
+                                                System.out.print("Confirmar 1.)Si 2.)No: ");
+                                                int opconfirmar = scanner.nextInt();
+                                                switch (opconfirmar) {
+                                                    case 1:
+                                                        bal.setMovimientoBalsa(opBal);
+                                                        bal.setMarca(marcaB);
+                                                        bal.setAnio(anoB);
+                                                        bal.setNombre(nombreB);
+                                                        try {
+                                                            em.getTransaction().begin();
+                                                            em.persist(bal);
+                                                            em.getTransaction().commit();
+                                                            System.out.println("Id: " + bal.getBalsaID());
+                                                            System.out.println("Enviado a la base de datos :D");
+                                                        } catch (Exception e) {
+                                                            em.getTransaction().rollback();
+                                                            e.printStackTrace();
+                                                            System.out.println("Ha ocurrido un error :(");
+                                                        }
+                                                        /*finally {
+                                                            em.close();
+                                                        }*/
+                                                        break;
+
+                                                    case 2:
+                                                        System.out.println("Operacion Cancelada");
+                                                        break;
+
+                                                    default:
+                                                        System.out.println("Operacion Cancelada");
+                                                        break;
+                                                }
+                                            } else {
+                                                System.out.println("Opcion Invalida.");
+                                            }
+                                        }
+                                        menu2 = false;
+                                        break;
+
+                                    case 2: //Leer Balsas
+                                        System.out.println("Seleccionar Balsas");
+                                        List<Balsas> lstBalsas = new ArrayList<>();
+                                        BalsasJpaController aB = new BalsasJpaController(emf);
+                                        try {
+                                            lstBalsas = aB.findBalsasEntities();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        /*finally {
+                                            em.close();
+                                        }*/
+
+                                        if (lstBalsas.isEmpty() == false) {
+                                            for (Balsas ab : lstBalsas) {
+                                                System.out.println("Id: " + ab.getBalsaID());
+                                                System.out.println("Marca: " + ab.getMarca());
+                                                System.out.println("Nombre: " + ab.getNombre());
+                                                System.out.println("Anio: " + ab.getNombre());
+                                                System.out.println("Movimiento Balsa: " + ab.getMovimientoBalsa());
+                                                System.out.println("---------------------------");
+                                            }
+                                        } else {
+                                            System.out.println("No hay datos para mostrar");
+                                        }
+                                        break;
+
+                                    case 3: //Actualizar Balsas
+                                        System.out.println("Actualizar Balsas");
+                                        System.out.print("Ingrese el ID de la Balsa: ");
+                                        int BalsaID = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        BalsasJpaController ab1 = new BalsasJpaController(emf);
+                                        Balsas balsaUp = null;
+
+                                        try {
+                                            balsaUp = ab1.findBalsas(BalsaID);
+
+                                            if (balsaUp != null) {
+                                                System.out.println("Id: " + balsaUp.getBalsaID());
+                                                System.out.println("Marca: " + balsaUp.getMarca());
+                                                System.out.println("Nombre: " + balsaUp.getNombre());
+                                                System.out.println("Año: " + balsaUp.getAnio());
+                                                System.out.println("Moviemiento Balsa: " + balsaUp.getMovimientoBalsa());
+                                                System.out.println("---------------------------");
+                                                System.out.println("Desea Actualizar la información?: 1.)Si 2.)No");
+                                                int opUp = scanner.nextInt();
+                                                scanner.nextLine();
+                                                int opcomUp = 0;
+                                                if (opUp == 1) {
+                                                    while (opcomUp != 1 && opcomUp != 2) {
+                                                        System.out.println("¿Cómo se moverá la balsa?:");
+                                                        System.out.println("1. Remo");
+                                                        System.out.println("2. Motor");
+                                                        opcomUp = scanner.nextInt();
+                                                        scanner.nextLine();
+                                                        if (opcomUp == 1 || opcomUp == 2) {
+
+                                                            System.out.print("Ingrese la Marca de la Balsa: ");
+                                                            String marcaB = scanner.nextLine();
+
+                                                            System.out.print("Ingrese el Año de lanzamiento: ");
+                                                            int anoB = scanner.nextInt();
+                                                            scanner.nextLine();
+
+                                                            System.out.print("Ingrese el nombre a registrar: ");
+                                                            String nombreB = scanner.nextLine();
+
+                                                            System.out.println("");
+                                                            System.out.println("Resumen: ");
+                                                            System.out.println("Marca: " + marcaB);
+                                                            System.out.println("Nombre: " + nombreB);
+                                                            System.out.println("Año: " + anoB);
+                                                            System.out.println("Movimiento Balsa: " + opcomUp);
+                                                            System.out.println("");
+                                                            System.out.print("Confirmar 1.)Si 2.)No: ");
+                                                            int opconfirmar = scanner.nextInt();
+
+                                                            switch (opconfirmar) {
+                                                                case 1:
+                                                                    balsaUp.setMovimientoBalsa(opcomUp);
+                                                                    balsaUp.setMarca(marcaB);
+                                                                    balsaUp.setAnio(anoB);
+                                                                    balsaUp.setNombre(nombreB);
+
+                                                                    try {
+                                                                        em.getTransaction().begin();
+                                                                        em.merge(balsaUp);  // Actualiza la entidad existente
+                                                                        em.getTransaction().commit();
+                                                                        System.out.println("Id: " + balsaUp.getBalsaID());
+                                                                        System.out.println("Actualización enviada a la base de datos :D");
+                                                                    } catch (Exception e) {
+                                                                        em.getTransaction().rollback();
+                                                                        e.printStackTrace();
+                                                                        System.out.println("Ha ocurrido un error :(");
+                                                                    }
+                                                                    break;
+
+                                                                case 2:
+                                                                    System.out.println("Operacion Cancelada");
+                                                                    break;
+
+                                                                default:
+                                                                    System.out.println("Operacion Cancelada");
+                                                                    break;
+                                                            }
+                                                        } else {
+                                                            System.out.println("Opción inválida, intentelo de nuevo");
+                                                        }
+                                                    }
+                                                } else {
+                                                    System.out.println("Operacion Cancelada");
+                                                }
+                                            } else {
+                                                System.out.println("No se encontró ninguna balsa con el BalsaID especificado.");
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            if (em != null && em.isOpen()) {
+                                                em.close();
+                                            }
+                                        }
+                                        break;
+
+                                    case 4: //Borrar Balsas
+                                        System.out.println("Borrar Balsas");
+                                        System.out.print("Ingrese el ID de la Balsa: ");
+                                        int balsaIDDl = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        BalsasJpaController ab2 = new BalsasJpaController(emf);
+                                        Balsas balsaDl = null;
+
+                                        try {
+                                            balsaDl = ab2.findBalsas(balsaIDDl);
+
+                                            if (balsaDl != null) {
+                                                System.out.println("Id: " + balsaDl.getBalsaID());
+                                                System.out.println("Marca: " + balsaDl.getMarca());
+                                                System.out.println("Nombre: " + balsaDl.getNombre());
+                                                System.out.println("Año: " + balsaDl.getAnio());
+                                                System.out.println("Movimiento Balsa: " + balsaDl.getMovimientoBalsa());
+                                                System.out.println("---------------------------");
+                                                System.out.println("Desea Eliminar este Registro?: 1.)Si 2.)No");
+                                                int opDl = scanner.nextInt();
+                                                scanner.nextLine();
+                                                if (opDl == 1) {
+                                                    try {
+                                                        ab2.destroy(balsaIDDl);
+                                                        System.out.println("La Balsa con ID " + balsaIDDl + " ha sido borrado correctamente.");
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                        System.out.println("Error al intentar borrar la balsa.");
+                                                    }
+                                                } else {
+                                                    System.out.println("Operación Cancelada.");
+                                                }
+
+                                            } else {
+                                                System.out.println("No se encontró ninguna balsa con la BalsaID especificado.");
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    /*finally {
+                                            if (emf != null && emf.isOpen()) {
+                                                emf.close();
+                                            }
+                                        }*/
+                                }
                                 break;
 
                             case 3:
@@ -619,7 +867,7 @@ public class ProyectoProgramacion1 {
                                 System.out.print("Seleccione una opcion: ");
                                 opmen = scanner.nextInt();
                                 break;
-                            
+
                             case 4:
                                 menu1 = true;
                                 menudb = false;
@@ -628,7 +876,7 @@ public class ProyectoProgramacion1 {
                                 System.out.println("Ha ocurrido un error");
                                 menudb = false;
                                 break;
-                        }                        
+                        }
                     } while (menudb == true);
                     break;
                 case 4: //Salir
