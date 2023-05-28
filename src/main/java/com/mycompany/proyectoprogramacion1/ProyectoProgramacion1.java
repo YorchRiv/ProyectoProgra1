@@ -390,9 +390,9 @@ public class ProyectoProgramacion1 {
                                                             em.getTransaction().rollback();
                                                             e.printStackTrace();
                                                             System.out.println("Ha ocurrido un error :(");
-                                                        } finally {
+                                                        } /*finally {
                                                             em.close();
-                                                        }
+                                                        }*/
                                                         break;
 
                                                     case 2:
@@ -418,9 +418,9 @@ public class ProyectoProgramacion1 {
                                             lstCarros = ac.findCarrosEntities();
                                         } catch (Exception e) {
                                             e.printStackTrace();
-                                        } finally {
+                                        } /*finally {
                                             em.close();
-                                        }
+                                        }*/
 
                                         if (lstCarros.isEmpty() == false) {
                                             for (Carros ca : lstCarros) {
@@ -583,11 +583,11 @@ public class ProyectoProgramacion1 {
                                             }
                                         } catch (Exception e) {
                                             e.printStackTrace();
-                                        } finally {
+                                        } /*finally {
                                             if (emf != null && emf.isOpen()) {
                                                 emf.close();
                                             }
-                                        }
+                                        }*/
                                     default:
                                         menudb = false;
                                         break;
