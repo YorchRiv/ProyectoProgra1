@@ -17,7 +17,6 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>9.4.0.jre11</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
