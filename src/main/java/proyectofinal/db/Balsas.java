@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author luism
+ * @author Jorge Mejicanos
  */
 @Entity
 @Table(name = "Balsas", catalog = "vehiculos", schema = "dbo")
@@ -42,7 +42,7 @@ public class Balsas implements Serializable {
     private String nombre;
     @Column(name = "Anio")
     private Integer anio;
-    @Column(name = "movimientoBalsa")
+    @Column(name = "MovimientoBalsa")
     private Integer movimientoBalsa;
 
     public Balsas() {

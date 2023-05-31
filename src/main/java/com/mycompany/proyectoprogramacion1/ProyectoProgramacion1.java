@@ -872,22 +872,23 @@ public class ProyectoProgramacion1 {
                                         Aviones avi = new Aviones();
                                         System.out.println("Ingrese la cantidad de pasajeros en el Avion");
                                         int pasajeros = scanner.nextInt();
-                                        scanner.nextInt();
+                                        scanner.nextLine();
 
                                         System.out.print("Ingrese la marca del Avion: ");
-                                        String marcaA = scanner.nextLine();
+                                        String marcaAA = scanner.nextLine();
 
                                         System.out.print("Ingrese el Año de lanzamiento: ");
                                         int anoA = scanner.nextInt();
                                         scanner.nextLine();
+                                        
 
                                         System.out.print("Ingrese el nombre a registrar: ");
-                                        String nombreA = scanner.nextLine();
+                                        String nombreAA = scanner.nextLine();
 
                                         System.out.println("");
                                         System.out.println("Resumen: ");
-                                        System.out.println("Marca: " + marcaA);
-                                        System.out.println("Nombre: " + nombreA);
+                                        System.out.println("Marca: " + marcaAA);
+                                        System.out.println("Nombre: " + nombreAA);
                                         System.out.println("Anio: " + anoA);
                                         System.out.println("Numero de pasajeros: " + pasajeros);
                                         System.out.println("");
@@ -896,9 +897,9 @@ public class ProyectoProgramacion1 {
                                         switch (opconfirmar) {
                                             case 1:
                                                 avi.setCantidadPasajeros(pasajeros);
-                                                avi.setMarca(marcaA);
+                                                avi.setMarca(marcaAA);
                                                 avi.setAnio(anoA);
-                                                avi.setNombre(nombreA);
+                                                avi.setNombre(nombreAA);
                                                 try {
                                                     em.getTransaction().begin();
                                                     em.persist(avi);
@@ -978,22 +979,22 @@ public class ProyectoProgramacion1 {
                                                 if (opUp == 1) {
                                                     System.out.println("Ingrese la cantidad de pasajeros en el Avion");
                                                     pasajeros = scanner.nextInt();
-                                                    scanner.nextInt();
+                                                    scanner.nextLine();
 
                                                     System.out.print("Ingrese la marca del Avion: ");
-                                                    marcaA = scanner.nextLine();
+                                                    marcaAA = scanner.nextLine();
 
                                                     System.out.print("Ingrese el Año de lanzamiento: ");
                                                     anoA = scanner.nextInt();
                                                     scanner.nextLine();
 
                                                     System.out.print("Ingrese el nombre a registrar: ");
-                                                    nombreA = scanner.nextLine();
+                                                    nombreAA = scanner.nextLine();
 
                                                     System.out.println("");
                                                     System.out.println("Resumen: ");
-                                                    System.out.println("Marca: " + marcaA);
-                                                    System.out.println("Nombre: " + nombreA);
+                                                    System.out.println("Marca: " + marcaAA);
+                                                    System.out.println("Nombre: " + nombreAA);
                                                     System.out.println("Anio: " + anoA);
                                                     System.out.println("Numero de pasajeros: " + pasajeros);
                                                     System.out.println("");
@@ -1002,15 +1003,15 @@ public class ProyectoProgramacion1 {
                                                     switch (opconfirmar) {
                                                         case 1:
                                                             avionUp.setCantidadPasajeros(pasajeros);
-                                                            avionUp.setMarca(marcaA);
+                                                            avionUp.setMarca(marcaAA);
                                                             avionUp.setAnio(anoA);
-                                                            avionUp.setNombre(nombreA);
+                                                            avionUp.setNombre(nombreAA);
                                                             try {
                                                                 em.getTransaction().begin();
-                                                                em.persist(avionUp);
+                                                                em.merge(avionUp);
                                                                 em.getTransaction().commit();
                                                                 System.out.println("Id: " + avionUp.getAvionesID());
-                                                                System.out.println("Enviado a la base de datos :D");
+                                                                System.out.println("Actualizacion enviada a la base de datos :D");
                                                             } catch (Exception e) {
                                                                 em.getTransaction().rollback();
                                                                 e.printStackTrace();
