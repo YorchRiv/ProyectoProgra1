@@ -1096,7 +1096,6 @@ public class ProyectoProgramacion1 {
                                 break;
 
                             case 4:
-                                menu1 = true;
                                 menudb = false;
                                 break;
                             default:
